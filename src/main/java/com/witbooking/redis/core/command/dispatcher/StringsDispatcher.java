@@ -1,5 +1,6 @@
 package com.witbooking.redis.core.command.dispatcher;
 
+import com.witbooking.redis.core.command.StringsCommand;
 import com.witbooking.redis.core.template.StringsTemplate;
 import org.springframework.stereotype.Service;
 
