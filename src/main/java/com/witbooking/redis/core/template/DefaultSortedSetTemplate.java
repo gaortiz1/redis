@@ -1,14 +1,17 @@
 package com.witbooking.redis.core.template;
 
 import com.witbooking.redis.core.storage.OrderMember;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 
+@Component
 public class DefaultSortedSetTemplate implements SortedSetTemplate {
 
     private final ConcurrentMap<String, TreeSet<OrderMember>> storage = new ConcurrentHashMap<>();
@@ -71,6 +74,11 @@ public class DefaultSortedSetTemplate implements SortedSetTemplate {
      */
     public int sizeByKey(String key) {
         return storage.containsKey(key) ? storage.get(key).size() : 0;
+    }
+
+    @Override
+    public Set<String> range(String key, Integer start, Integer stop) {
+        return null;
     }
 
     public OrderMember get(String key, String member) {
