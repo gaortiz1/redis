@@ -11,7 +11,7 @@ import java.time.temporal.ChronoUnit;
 @Component
 public class DefaultStringTemplate implements StringsTemplate {
 
-    private final static long MAX_DURATION_IN_SECONDS = ChronoUnit.FOREVER.getDuration().getSeconds();
+    private final static long MAX_DURATION_IN_SECONDS = ChronoUnit.YEARS.getDuration().getSeconds();
     private final static int DEFAULT_VALUE_AS_NUMBER = 1;
 
     private final static String NIL = "nil";
@@ -36,6 +36,7 @@ public class DefaultStringTemplate implements StringsTemplate {
         Assert.notNull(key, "key is required");
         Assert.notNull(value, "value is required");
         Assert.isTrue(expirationInSeconds > 0, "invalid expire time in 'set' command");
+        Assert.isTrue(expirationInSeconds < MAX_DURATION_IN_SECONDS, "value is not an integer or out of range");
 
         strings.get(key).ifPresentOrElse(
                 currentValue -> strings.replace(key, value),
