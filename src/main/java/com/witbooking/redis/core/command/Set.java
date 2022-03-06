@@ -1,24 +1,19 @@
 package com.witbooking.redis.core.command;
 
 import com.witbooking.redis.core.template.StringsTemplate;
-import lombok.Data;
 
 import java.util.Optional;
 
-@Data
 public class Set implements StringsCommand {
 
-    private String key;
-    private String value;
-    private Long expirationInSeconds;
+    private final String key;
+    private final String value;
+    private final Long expirationInSeconds;
 
     public Set(String key, String value, Long expirationInSeconds) {
         this.key = key;
         this.value = value;
         this.expirationInSeconds = expirationInSeconds;
-    }
-
-    public Set() {
     }
 
     @Override

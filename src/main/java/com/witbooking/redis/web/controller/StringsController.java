@@ -1,9 +1,18 @@
 package com.witbooking.redis.web.controller;
 
-import com.witbooking.redis.core.command.*;
+import com.witbooking.redis.core.command.DBSize;
+import com.witbooking.redis.core.command.Del;
+import com.witbooking.redis.core.command.Get;
+import com.witbooking.redis.core.command.Incr;
+import com.witbooking.redis.core.command.Set;
 import com.witbooking.redis.core.command.dispatcher.StringsDispatcher;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.Pattern;
 
@@ -55,7 +64,7 @@ public class StringsController {
             @RequestParam("key")
             @Pattern(
                     regexp = REGEX_FOR_NUMBERS_LETTERS_UNDERSCORE_MIDDLEDASH,
-                    message = "key can only be numeric, alphabetic, underscore(_) and middle dash(_)"
+                    message = "key can only be numeric, letter, underscore(_) and middle-dash(_)"
             ) final String key
     ) {
         return stringsDispatcher.dispatch(Get.of(key));
