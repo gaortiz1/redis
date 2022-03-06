@@ -29,7 +29,7 @@ public class Set implements StringsCommand {
                 .orElseGet(() -> stringsTemplate.set(key, value));
     }
 
-    public static Set with(String key, String value, Long duration) {
-        return new Set(key, value, duration);
+    public static Set with(String key, String value, Long expirationInSeconds) {
+        return new Set(key, value, expirationInSeconds);
     }
 }

@@ -17,7 +17,8 @@ public class DefaultStrings implements Strings {
             .build();
 
     public String set(String key, String value, long durationInSeconds) {
-        return map.put(key, value, durationInSeconds, TimeUnit.SECONDS);
+        map.put(key, value, durationInSeconds, TimeUnit.SECONDS);
+        return value;
     }
 
     @Override
@@ -27,7 +28,8 @@ public class DefaultStrings implements Strings {
 
     @Override
     public String replace(String key, String newValue) {
-        return map.replace(key, newValue);
+        map.replace(key, newValue);
+        return newValue;
     }
 
     @Override
