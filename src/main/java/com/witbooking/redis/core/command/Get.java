@@ -11,12 +11,12 @@ public class Get implements StringsCommand {
         this.key = key;
     }
 
-    public static Get of(String key) {
-        return new Get(key);
-    }
-
     @Override
     public String execute(StringsTemplate stringsTemplate) {
         return stringsTemplate.get(key);
+    }
+
+    public static Get of(String key) {
+        return new Get(key);
     }
 }

@@ -11,12 +11,12 @@ public class Incr implements StringsCommand {
         this.key = key;
     }
 
-    public static Incr of(String key) {
-        return new Incr(key);
-    }
-
     @Override
     public String execute(StringsTemplate stringsTemplate) {
         return stringsTemplate.incrementsValue(key);
+    }
+
+    public static Incr of(String key) {
+        return new Incr(key);
     }
 }

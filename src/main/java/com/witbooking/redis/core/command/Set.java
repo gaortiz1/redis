@@ -22,15 +22,15 @@ public class Set implements StringsCommand {
     public Set() {
     }
 
-    public static Set with(String key, String value, Long duration) {
-        return new Set(key, value, duration);
-    }
-
     @Override
     public String execute(StringsTemplate stringsTemplate) {
         return Optional
                 .ofNullable(expirationInSeconds)
                 .map(expirationInSeconds -> stringsTemplate.set(key, value, expirationInSeconds))
                 .orElseGet(() -> stringsTemplate.set(key, value));
+    }
+
+    public static Set with(String key, String value, Long duration) {
+        return new Set(key, value, duration);
     }
 }

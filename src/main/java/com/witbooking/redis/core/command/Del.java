@@ -11,12 +11,12 @@ public class Del implements StringsCommand {
         this.key = key;
     }
 
-    public static Del of(String key) {
-        return new Del(key);
-    }
-
     @Override
     public String execute(StringsTemplate stringsTemplate) {
         return stringsTemplate.delete(key);
+    }
+
+    public static Del of(String key) {
+        return new Del(key);
     }
 }
