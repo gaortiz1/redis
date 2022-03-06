@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableWebMvc
 @Configuration
 @ComponentScan("com.witbooking.redis")
-public class ClientWebConfigJava implements WebMvcConfigurer {
+public class RedisWebConfig implements WebMvcConfigurer {
 
     @Bean
     public MethodValidationPostProcessor methodValidationPostProcessor() {
