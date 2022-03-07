@@ -51,10 +51,12 @@ Run the test cases execute
 
 - SpringBoot
 - Spring Framework (Core, MVC)
-- Mockk
 - JUnit 5 Jupiter
 - Mockito
 - Gradle 7.1.x
+- expiringmap
+- Lombok
+- awaitility
 
 ## Architecture
 To determine the architecture of this service I rely on this PDF  https://dsf.berkeley.edu/papers/fntdb07-architecture.pdf
