@@ -4,13 +4,17 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class DefaultSortedSet implements SortedSet {
 
-    private final HashMap<String, ZSet> map = new HashMap<>();
+    private final ConcurrentMap<String, ZSet> map = new ConcurrentHashMap<>();
 
     public boolean add(String key, Integer score, String member) {
         return map.computeIfAbsent(key, k -> new DefaultZSet()).add(score, member);
