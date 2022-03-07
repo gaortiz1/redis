@@ -8,17 +8,16 @@ import org.springframework.util.Assert;
 
 import java.time.temporal.ChronoUnit;
 
+import static com.witbooking.redis.core.template.enums.Result.FALSE;
+import static com.witbooking.redis.core.template.enums.Result.NIL;
+import static com.witbooking.redis.core.template.enums.Result.OK;
+import static com.witbooking.redis.core.template.enums.Result.TRUE;
+
 @Component
 public class DefaultStringTemplate implements StringsTemplate {
 
     private final static long MAX_DURATION_IN_SECONDS = ChronoUnit.YEARS.getDuration().getSeconds();
     private final static int DEFAULT_VALUE_AS_NUMBER = 1;
-
-    private final static String NIL = "nil";
-    private final static String OK = "OK";
-    private final static String TRUE = "1";
-    private final static String FALSE = "0";
-
 
     private final Strings strings;
 
@@ -43,7 +42,7 @@ public class DefaultStringTemplate implements StringsTemplate {
                 () -> strings.set(key, value, expirationInSeconds)
         );
 
-        return OK;
+        return OK.getValue();
     }
 
     @Concurrent
@@ -58,13 +57,13 @@ public class DefaultStringTemplate implements StringsTemplate {
     @Concurrent
     public String get(String key) {
         Assert.notNull(key, "key is required");
-        return strings.get(key).orElse(NIL);
+        return strings.get(key).orElse(NIL.getValue());
     }
 
     @Concurrent
     public String delete(String key) {
         Assert.notNull(key, "key is required");
-        return strings.delete(key).map(value -> TRUE).orElse(FALSE);
+        return strings.delete(key).map(value -> TRUE.getValue()).orElse(FALSE.getValue());
     }
 
     @Concurrent

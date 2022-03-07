@@ -12,7 +12,7 @@ public class ZCard implements SortedSetCommand {
 
     @Override
     public String execute(SortedSetTemplate sortedSetTemplate) {
-        return String.valueOf(sortedSetTemplate.sizeByKey(key));
+        return String.valueOf(sortedSetTemplate.size(key));
     }
 
     public static ZCard of(String key) {

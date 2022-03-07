@@ -1,16 +1,15 @@
 package com.witbooking.redis.core.template;
 
-
-import java.util.Set;
+import java.util.List;
 
 public interface SortedSetTemplate {
 
     String add(String key, Integer score, String member);
 
-    int rank(String key, String member);
+    String rank(String key, String member);
 
-    int sizeByKey(String key);
+    int size(String key);
 
-    Set<String> range(String key, Integer start, Integer stop);
+    List<String> range(String key, Integer start, Integer stop);
 
 }

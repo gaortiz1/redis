@@ -17,5 +17,4 @@ public interface Strings {
     Optional<String> delete(String key);
 
     int size();
-
 }
