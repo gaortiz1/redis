@@ -4,13 +4,15 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.TreeSet;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.stream.Collectors;
 
 public class DefaultZSet implements ZSet {
 
     private final ConcurrentSkipListMap<Integer, TreeSet<String>> scores = new ConcurrentSkipListMap<>();
-    private final ConcurrentSkipListMap<String, Integer> members = new ConcurrentSkipListMap<>();
+    private final ConcurrentMap<String, Integer> members = new ConcurrentHashMap<>();
 
     public boolean add(Integer score, String member) {
 
